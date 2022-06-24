@@ -25,20 +25,20 @@ pipeline {
                 }
             }
         }
-        stage("Start the app") {
-            steps {
-                sh "docker-compose up -d"
-            }
-        }
-        stage ('Test endpoint') {
-            steps {
-                script {
+//         stage("Start the app") {
+//             steps {
+//                 sh "docker-compose up -d"
+//             }
+//         }
+//         stage ('Test endpoint') {
+//             steps {
+//                 script {
 
-                     sh "sleep 10"
-                     sh "curl -i 50.112.225.144:8000"
-                }
-            }
-        }
+//                      sh "sleep 10"
+//                      sh "curl -i 50.112.225.144:8000"
+//                 }
+//             }
+//         }
 
          stage ('Push Docker Image') {
              when { expression { response.status == 200 } }
