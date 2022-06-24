@@ -34,11 +34,20 @@ pipeline {
             sh "docker login -u ${env.username} -p ${env.password}"
 
             sh "docker push nerd2021/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+                    
+            
             }
           }
          }
 
-        
+         stage ('Docker LogOut') {
+            steps {
+                script {
+
+                       sh "docker logout "
+                }
+            }
+        }
 
   
     }
