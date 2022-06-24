@@ -1,5 +1,5 @@
 FROM php:7-apache
-LABEL MAINTAINER Somex
+LABEL MAINTAINER Ella
 
 RUN apt update
 RUN apt install zip git nginx -y
