@@ -25,10 +25,8 @@ pipeline {
                 }
             }
         }
-
-
-         stage ('Push Docker Image') {
-             when { expression { response.status == 200 } }
+        stage ('Push Docker Image') {
+            when { expression { response.status == 200 } }
             steps{
                 script {
             sh "docker login -u ${env.username} -p ${env.password}"
@@ -40,14 +38,7 @@ pipeline {
           }
          }
 
-         stage ('Docker LogOut') {
-            steps {
-                script {
-
-                       sh "docker logout "
-                }
-            }
-        }
+       
 
   
     }
