@@ -26,8 +26,7 @@ pipeline {
             }
         }
         stage ('Push Docker Image') {
-            when { expression { response.status == 200 } }
-            steps{
+             steps{
                 script {
             sh "docker login -u ${env.username} -p ${env.password}"
 
