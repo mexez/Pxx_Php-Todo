@@ -13,7 +13,7 @@ pipeline {
 
         stage ('Checkout Repo'){
             steps {
-            git branch: 'main', url: 'https://github.com/Ellawangari/php-todo.git'
+            git branch: 'main', url: 'https://github.com/mexez/Pxx_Php-Todo.git'
       }
         }
 

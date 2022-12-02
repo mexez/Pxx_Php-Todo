@@ -1,5 +1,5 @@
 FROM php:7-apache
-LABEL MAINTAINER Ella
+LABEL MAINTAINER Mex
 
 RUN apt update
 RUN apt install zip git nginx -y
