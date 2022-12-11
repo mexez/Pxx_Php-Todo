@@ -21,7 +21,7 @@ pipeline {
             steps {
                 script {
 
-                       sh "docker build -t nerd2021/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+                       sh "docker build -t mexy/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
                 script {
             sh "docker login -u ${env.username} -p ${env.password}"
 
-            sh "docker push nerd2021/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+            sh "docker push mexy/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
                     
             
             }
