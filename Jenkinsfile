@@ -17,7 +17,9 @@ pipeline {
   
     stage('Checkout Git') {
       steps {
-        checkout([$class: 'GitSCM', branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[credentialsId: 'a0cfb614-7112-4f19-a952-d0fe685f7899', url: 'https://github.com/scholarship-task/docker']]])
+       # checkout([$class: 'GitSCM', branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[credentialsId: 'a0cfb614-7112-4f19-a952-d0fe685f7899', url: 'https://github.com/scholarship-task/docker']]])
+       checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'f7819609-a1e8-488c-b2ed-1d701f77fba7', url: 'https://github.com/mexez/Pxx_Php-Todo.git']]])
+            
       }
     }
       
@@ -55,3 +57,5 @@ pipeline {
         }
   }
 }
+
+
