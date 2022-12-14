@@ -26,9 +26,10 @@ pipeline {
             steps {
                 script {
                     echo "building the docker image..."
-                    withCredentials([usernameColonPassword(credentialsId: '0749aa12-736c-4030-84cc-9251547326b4', variable: 'docker-password')]) {
-                        sh "cd tooling/"               
-                    }
+                withCredentials([usernamePassword(credentialsId: '001', passwordVariable: 'dockerhub001', usernameVariable: 'dockerhub')]){
+                    sh "docker login -u ${env.dockerhub} -p ${env.dockerhub001}"
+                    echo "Login succeeded......."
+
                 }
             }
     }
