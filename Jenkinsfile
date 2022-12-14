@@ -1,32 +1,18 @@
 pipeline {
     agent any
     stages {
-        stage(‘Initial Cleanup’) {
-            steps {
-            dir(“${WORKSPACE}“) {
-              deleteDir()
-            }
-          }
-        }
         stage (‘Checkout Repo’){
             steps {
             git branch: ‘main’, url: ‘https://github.com/mexez/Pxx_Php-Todo.git’
-      }
         }
-        stage (‘Build Docker Image’) {
+        stage('Docker Push') {
             steps {
-                script {
-                       sh “docker build -t mexy/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} .”
+                echo "Login to DockerHub and push the docker image..."
+                withCredentials([usernamePassword(credentialsId: '001', passwordVariable: 'dockerhub001', usernameVariable: 'dockerhub')]){
+                    sh "docker login -u ${env.dockerhub} -p ${env.dockerhub001}"
+                    echo "Login succeeded......."
                 }
             }
         }
-        stage (‘Push Docker Image’) {
-             steps{
-                script {
-    // some block
-sh “docker login -u ${env.dockerhub} -p ${env.dockerhub001}”
-}
-            }
-          }
-         }
     }
+}}
